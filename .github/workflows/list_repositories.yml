@@ -1,0 +1,27 @@
+name: List Repositories
+
+on:
+  workflow_dispatch:
+
+jobs:
+  list-repositories:
+    runs-on: ubuntu-latest
+    steps:
+        - name: Repo-List-Generator
+          uses: yi-Xu-0100/repo-list-generator@v1.0.1
+          with:
+            # Set up the user name to generate repository list. It can be user or organization. The 'owner/repository' will transform to 'owner'.
+            user: # optional, default is ${{ github.repository }}
+            # Set up maxPage for request to generate repository list. Default 100 repository per page can be fetched.
+
+            max_page: # optional, default is 10
+            # Set up the personal access token (PAT). The PAT is used to generate repository list for user or organization.
+
+            my_token: # optional, default is ${{ github.token }}
+            # Set up the block_list for repoList. The repositories in block_list will exclude in repository list.
+
+            block_list: # optional, default is 
+            # Set up whether allow empty repository for repoList.
+
+            allow_empty: # optional
+          
