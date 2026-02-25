@@ -9,6 +9,8 @@ jobs:
     steps:
         - name: Repo-List-Generator
           uses: yi-Xu-0100/repo-list-generator@v1.0.1
+          env: 
+            GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           with:
             # Set up the user name to generate repository list. It can be user or organization. The 'owner/repository' will transform to 'owner'.
             user: # optional, default is ${{ github.repository }}
