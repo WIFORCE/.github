@@ -9,8 +9,6 @@ jobs:
     steps:
         - name: Repo-List-Generator
           uses: yi-Xu-0100/repo-list-generator@v1.0.1
-          env: 
-            GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           with:
             # Set up the user name to generate repository list. It can be user or organization. The 'owner/repository' will transform to 'owner'.
             user: # optional, default is ${{ github.repository }}
@@ -19,7 +17,7 @@ jobs:
             max_page: # optional, default is 10
             # Set up the personal access token (PAT). The PAT is used to generate repository list for user or organization.
 
-            my_token: # optional, default is ${{ github.token }}
+            my_token: ${{ secrets.GITHUB_TOKEN }} # optional, default is ${{ github.token }}
             # Set up the block_list for repoList. The repositories in block_list will exclude in repository list.
 
             block_list: # optional, default is 
