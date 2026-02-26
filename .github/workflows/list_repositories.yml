@@ -11,7 +11,7 @@ jobs:
           uses: yi-Xu-0100/repo-list-generator@v1.0.1
           with:
             # Set up the user name to generate repository list. It can be user or organization. The 'owner/repository' will transform to 'owner'.
-            user: # optional, default is ${{ github.repository }}
+            user: WIFORCE # optional, default is ${{ github.repository }}
             # Set up maxPage for request to generate repository list. Default 100 repository per page can be fetched.
 
             max_page: # optional, default is 10
