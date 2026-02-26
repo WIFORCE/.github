@@ -1,0 +1,26 @@
+name: Update documentation
+on:
+  workflow_dispatch:
+jobs:
+  update-docs:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+      - name: Generate REPOSITORIES.md
+        run: 
+            mkdir -p docs && \
+            echo "|Repository|Description|Info|Last Updated|\n|---|------|---|---|" > docs/REPOSITORIES.md && \
+            gh repo list WIFORCE | sed "s:\t:|:g" | sed 's:$:|:' | sed 's:^:|:' | grep -v .github | sort >> docs/REPOSITORIES.md
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - name: Commit and push changes
+        run: |
+            git config --global user.name "github-actions[bot]"
+            git config --global user.email "github-actions[bot]@users.noreply.github.com"
+            git add docs/REPOSITORIES.md
+            git commit -m "Update REPOSITORIES.md"
+            git push
+    
