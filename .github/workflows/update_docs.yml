@@ -17,7 +17,9 @@ jobs:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       - name: Merge into README
         run: |
-            cat docs/Introduction.md "\n## Repositories\n" docs/Repositories.md > profile/README.md
+            echo "\n## Repositories\n" > tmp.md
+            cat docs/Introduction.md tmp.md docs/Repositories.md > profile/README.md
+            rm tmp.md
       - name: Commit and push changes
         run: |
             git config --global user.name "github-actions[bot]"
