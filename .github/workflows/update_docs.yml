@@ -31,3 +31,10 @@ jobs:
             git commit -m "Updated the documentation with the latest repositories"
             git push
     
+# Note: It is possible to use a more sophisticated `gh` command to get the list of repositories.
+# ```bash
+# gh repo list --json name,description,isPrivate,isFork,isArchived --template \
+# '{{range .}}{{tablerow (printf "|%s|%s|%s|" .name .description .isPrivate)}}{{end}}'
+# ``` using the `--json` and `--template` options (written in Go template syntax) to format 
+# the output directly as a Markdown table. However, the current implementation using `sed` 
+# and `grep` is simpler and sufficient for our needs.
