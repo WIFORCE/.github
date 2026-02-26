@@ -10,14 +10,17 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v3
       - name: Generate Repositories.md
-        run: 
-            echo "|Repository|Description|Info|Last Updated|\n|---|------|---|---|" > docs/Repositories.md
+        run: |
+            echo "|Repository|Description|Info|Last Updated|" > docs/Repositories.md
+            echo "|---|---|---|---|" >> docs/Repositories.md
             gh repo list WIFORCE | sed "s:\t:|:g" | sed 's:$:|:' | sed 's:^:|:' | grep -v .github | sort >> docs/Repositories.md
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       - name: Merge into README
         run: |
-            echo "\n## Repositories\n" > tmp.md
+            echo "
+            ## Repositories
+            " > tmp.md
             cat docs/Introduction.md tmp.md docs/Repositories.md > profile/README.md
             rm tmp.md
       - name: Commit and push changes
