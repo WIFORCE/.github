@@ -15,7 +15,7 @@ jobs:
             echo "|---|---|---|---|" >> docs/Repositories.md
             gh repo list WIFORCE | sed "s:\t:|:g" | sed 's:$:|:' | sed 's:^:|:' | grep -v .github | sort >> docs/Repositories.md
         env:
-          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GH_TOKEN: ${{ secrets.WIFORCE_ACTION }}
       - name: Merge into README
         run: |
             echo "
