@@ -32,6 +32,10 @@ This is a bit "cumbersome" for private organizations, but anyone as admin in an 
     ```
 6. And in your org `Settings`, you should see in the `Third Party Access` `Active tokens` section your newly created PAT.
 
+## Renewing the secret
+
+You will get an email when your PAT is about to expire. Follow the link to renew it. Then go to your organization, `Settings`, then select `Secrets and variables` and `Actions`. Select the PAT you want to update (click the pencil), then add the new token and save it. You can then go to your organization, `Settings`, then `Personal Access Tokens` and verify that your PAT has been renewed.
+
 ## Links
 
 * [Authenticate with GitHub Token](https://docs.github.com/en/actions/tutorials/authenticate-with-github_token)
